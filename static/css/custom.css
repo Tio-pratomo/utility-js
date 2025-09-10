@@ -1,0 +1,22 @@
+/* Jika ingin pakai Google Fonts Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+/* Ubah warna utama (default hijau Relearn → merah EA2A33) */
+:root {
+  --MAIN-TEXT-color: #333;
+  --MAIN-BG-color: #fff;
+  --MAIN-LINK-color: #ea2a33;
+  --MAIN-LINK-HOVER-color: #b71c1c;
+  --ACCENT-color: #ea2a33;
+}
+
+/* Ubah font global */
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* Sidebar aktif/hover */
+.nav__item.is-active > a,
+.nav__item a:hover {
+  color: #ea2a33 !important;
+}

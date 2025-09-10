@@ -1,0 +1,26 @@
+# Hugo build output
+/public/
+/resources/_gen/
+/hugo_stats.json
+
+# Deployment (branch gh-pages biasanya berisi hasil build /public)
+.deploy/
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Node / JS dependencies (if you use npm, yarn, or pnpm)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Editor junk
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# VS Code
+.vscode/

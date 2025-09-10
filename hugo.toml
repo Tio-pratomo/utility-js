@@ -1,0 +1,22 @@
+baseURL = "http://localhost:1313/"
+languageCode = "id"
+title = "Utility Javascript"
+theme = "relearn"
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+hardWraps = true
+
+[markup.goldmark.parser]
+autoHeadingID = true
+
+[markup.goldmark.parser.attribute]
+block = true
+
+
+[params]
+themeVariant = "blue"          # bisa juga "relearn-dark", "zen-light", "zen-dark", dll
+customCSS = ["css/custom.css"] # path relatif ke folder /static/
+collapsibleMenu = true
