@@ -17,26 +17,27 @@ Kita tidak ingin kode logger kita tersebar di mana-mana di aplikasi. Akan lebih 
 
   Di dalam folder utama proyek Anda (pino-auth-app/), buat folder baru bernama **utils**. Folder ini biasanya digunakan untuk menyimpan fungsi-fungsi pembantu atau konfigurasi yang bisa digunakan di banyak tempat.
 
-  ```plain
-  pino-auth-app/
-  ├── index.js
-  ├── solution.js
-  ├── package.json
-  ├── .env
-  ├── utils/          <-- Folder baru
-  └── views/
+  ```tree
+  - pino-auth-app/ | folder
+    - index.js | file-alt | secondary
+    - solution.js | file-alt | secondary
+    - package.json | file-alt | secondary
+    - .env | file-alt | secondary
+    - utils/ <--folder baru | folder | accent
+    - views/ | folder
   ```
 
 - **Buat File logger.js:**
 
-Di dalam folder **utils** yang baru Anda buat, buat file baru dengan nama logger.js.
+  Di dalam folder **utils** yang baru Anda buat, buat file baru dengan nama logger.js.
 
-    ```plain
-    pino-auth-app/
-    ├── utils/
-    │   └── logger.js   <-- File baru
-    └── ...
-    ```
+  ```tree
+  - pino-auth-app/ | folder
+    - ...
+    - ...
+    - utils/ | folder | accent
+      - logger.js  <-- file baru | file-alt | secondary
+  ```
 
 ## 2. Mengimpor Pino dan dotenv
 
@@ -44,7 +45,7 @@ Sekarang, di dalam file `utils/logger.js`, kita akan memanggil "alat" Pino agar 
 
 Kode di **`utils/logger.js`:**
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 // utils/logger.js
 
 // Import pustaka pino
@@ -82,7 +83,7 @@ Kita perlu melakukan beberapa perubahan di `index.js` Anda:
 
 Kode di **`index.js` (perubahan yang sudah ada akan kita tambahkan):**
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 // index.js
 import express from "express";
 import axios from "axios";
@@ -142,7 +143,7 @@ app.listen(port, () => {
 
 - `import logger from './utils/logger.js';`: Kita "memanggil" objek logger yang sudah kita buat di `utils/logger.js`.
 
-- `const port = process.env.PORT \|\| 3000;`: Kita mengambil nilai `PORT` dari `.env`. Jika tidak ada, defaultnya adalah `3000`.
+- `const port = process.env.PORT || 3000;`: Kita mengambil nilai `PORT` dari `.env`. Jika tidak ada, defaultnya adalah `3000`.
 
 - `logger.info('Pesan Anda di sini');`: Ini adalah cara paling dasar untuk mencatat log dengan level `info`.
 
@@ -156,14 +157,14 @@ app.listen(port, () => {
 2. Buka terminal di direktori proyek Anda.
 3. Jalankan aplikasi:
 
-```bash
+```bash {lineNos="true" wrap="true" title="bash"}
 node --env-file=.env index.js
 
 ```
 
 Atau jika pakai nodemon
 
-```bash
+```bash {lineNos="true" wrap="true" title="bash"}
 pnpm run dev
 ```
 
@@ -178,7 +179,7 @@ Kita sudah membuat variabel `LOG_ENABLE` di `.env`. Sekarang mari kita gunakan i
 **Modifikasi `utils/logger.js:`**  
 Kita akan menambahkan properti `enabled` ke konfigurasi `pino`.
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 // utils/logger.js
 
 import pino from "pino";
@@ -201,11 +202,10 @@ export default logger;
 
 Cuplikan kode
 
-```
+```bash {lineNos="true" wrap="true" title="bash"}
 PORT=3000
 NODE_ENV=development
 LOG_ENABLE=false # Ubah menjadi false
-
 ```
 
 1. Simpan file `.env` dan jalankan ulang aplikasi. Anda seharusnya tidak melihat pesan log dari Pino di terminal. Ini membuktikan bahwa sakelar kita berfungsi!
@@ -220,7 +220,7 @@ Secara default, Pino mungkin hanya menampilkan log dari level `info` ke atas (wa
 
 Tambahkan properti `level` ke konfigurasi `pino`. Kita akan mengaturnya berdasarkan `NODE_ENV`.
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 // utils/logger.js
 
 import pino from "pino";
@@ -240,24 +240,22 @@ export default logger;
 **Coba Ulangi di `index.js`:**  
 Untuk melihat efeknya, mari tambahkan beberapa log dengan level berbeda di `index.js`.
 
-```
+```js {lineNos="true" wrap="true" title="javascript"}
 // index.js (lanjutan, tambahkan ini di bagian mana saja, misal di bawah rute /test-log)
 
 // ... kode sebelumnya ...
 
 app.get("/all-log-levels", (req, res) => {
-  logger.trace('Ini adalah pesan TRACE, sangat detail.');
-  logger.debug('Ini adalah pesan DEBUG, untuk membantu pengembangan.');
-  logger.info('Ini adalah pesan INFO, informasi umum.');
-  logger.warn('Ini adalah pesan WARN, potensi masalah.');
-  logger.error('Ini adalah pesan ERROR, ada kesalahan!');
-  logger.fatal('Ini adalah pesan FATAL, aplikasi mungkin berhenti!');
-  res.send('Memicu semua level log. Lihat konsol Anda.');
+  logger.trace("Ini adalah pesan TRACE, sangat detail.");
+  logger.debug("Ini adalah pesan DEBUG, untuk membantu pengembangan.");
+  logger.info("Ini adalah pesan INFO, informasi umum.");
+  logger.warn("Ini adalah pesan WARN, potensi masalah.");
+  logger.error("Ini adalah pesan ERROR, ada kesalahan!");
+  logger.fatal("Ini adalah pesan FATAL, aplikasi mungkin berhenti!");
+  res.send("Memicu semua level log. Lihat konsol Anda.");
 });
 
 // ... app.listen dan kode lainnya ...
-
-
 ```
 
 **Coba Jalankan Aplikasi:**
@@ -283,7 +281,7 @@ Kita akan fokus pada dua hal:
 
 Tambahkan properti `timestamp` dan `formatters` ke konfigurasi `pino`.
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 // utils/logger.js
 
 import pino from "pino";
@@ -325,7 +323,7 @@ Sekarang Anda akan melihat output log di terminal yang memiliki timestamp dalam 
 
 Jika anda ingin, timestamp nya lebih mudah lagi keterbacaannya di console atau file, kita bisa gunakan internationalization seperti ini :
 
-```js
+```js {lineNos="true" wrap="true" title="javascript"}
 import pino from "pino";
 
 function getFormattedLocalTime() {

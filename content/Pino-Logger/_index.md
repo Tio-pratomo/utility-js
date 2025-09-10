@@ -1,6 +1,6 @@
 ---
-title: "Pino-Loggers"
-linkTitle: "Pino-Loggers"
+title: "Pino-Logger"
+linkTitle: "Pino-Logger"
 weight: 1
 description: "Pino-Loggers adalah dokumentasi dan panduan lengkap tentang cara menggunakan library logging Pino untuk Node.js."
 ---
