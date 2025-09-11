@@ -10,7 +10,7 @@ Ingat analogi kendaraan? Sekarang kita akan menyiapkan kendaraan kita dan memasa
 
 ## Mempersiapkan Proyek Express JS Anda
 
-Anda sudah mengunggah file `API-Authentication.zip` yang berisi proyek Express.js. Ini adalah proyek "kendaraan" kita.
+Anda sudah mengunggah file [API-Authentication.zip](https://github.com/Tio-pratomo/kumpulan-resource/blob/main/API_Authentication.zip) yang berisi proyek Express.js. Ini adalah proyek "kendaraan" kita.
 
 Disini, saya memakai node js versi **_v24.2.0_**
 
@@ -20,21 +20,22 @@ Disini, saya memakai node js versi **_v24.2.0_**
 
   Pertama, pastikan Anda sudah mengekstrak file API-Authentication.zip ke folder di komputer Anda. Misalnya, Anda bisa mengekstraknya ke folder bernama pino-auth-app.
 
-  ```plain
-  pino-auth-app/
-  ├── index.js
-  ├── solution.js
-  ├── package.json
-  ├── package-lock.json
-  └── views/
-      └── index.ejs
+  ```tree
+  - pino-auth-app/ | folder
+    - index.js | fa-brands fa-js | accent
+    - solution.js | fa-brands fa-js | accent
+    - package.json | file-lines | accent
+    - package-lock.json | file-lines | accent
+    - views | folder
+      - index.ejs | file-code | orange
+
   ```
 
 - **Masuk ke Direktori Proyek:**
 
   Buka terminal (Command Prompt/PowerShell di Windows, Terminal di macOS/Linux) dan navigasikan ke folder tempat Anda mengekstrak proyek tersebut.
 
-  ```bash
+  ```bash {title="bash" wrap="true"}
   cd pino-auth-app
   ```
 
@@ -42,13 +43,28 @@ Disini, saya memakai node js versi **_v24.2.0_**
 
 - **Instal Dependensi Proyek:**
 
-  Proyek Express.js ini memiliki beberapa "suku cadang" yang sudah ditentukan di file package.json (seperti express, axios, ejs). Kita perlu memasang semua suku cadang ini agar proyek bisa berjalan. Karena Anda ingin menggunakan pnpm, gunakan perintah ini:
+  Proyek Express.js ini memiliki beberapa "suku cadang" yang sudah ditentukan di file package.json (seperti express, axios, ejs). Kita perlu memasang semua suku cadang ini agar proyek bisa berjalan. Gunakan perintah ini agar "suku cadang" tersebut, terinstall di project anda:
+
+  {{< tabs groupid="a" >}}
+
+  {{% tab title="pnpm" %}}
 
   ```bash
   pnpm install
   ```
 
-  Perintah ini akan membaca `package.json` dan mengunduh serta memasang semua dependensi yang diperlukan ke dalam folder `node\_modules`.
+  {{% /tab %}}
+  {{% tab title="npm" %}}
+
+  ```bash
+  npm i
+  ```
+
+  {{% /tab %}}
+
+  {{< /tabs >}}
+
+  Perintah ini akan membaca `package.json` dan mengunduh serta memasang semua dependensi yang diperlukan ke dalam folder `node_modules`.
 
 ## Menyiapkan File .env
 
@@ -63,7 +79,7 @@ Dengan begitu, kita tidak perlu mengubah kode utama saat ada perubahan konfigura
 - **Isi File .env:**  
    Tambahkan baris-baris berikut ke dalam file .env yang baru Anda buat:
 
-  ```plain
+  ```{title=".env"}
   PORT=3000
   NODE_ENV=development
   LOG_ENABLE=true
@@ -77,10 +93,6 @@ Dengan begitu, kita tidak perlu mengubah kode utama saat ada perubahan konfigura
 
   - **LOG_ENABLE=true:** Ini adalah sakelar khusus yang akan kita buat sendiri untuk dengan mudah mengaktifkan atau menonaktifkan logging Pino di aplikasi kita. Jika `true`, logging akan aktif. Jika `false`, logging akan dinonaktifkan.
 
-  > [!tip] **Penting:**
-  > Untuk bisa membaca nilai dari file `.env` ini di kode JavaScript kita, kita perlu pustaka `dotenv`.
-  > Kabar baiknya, di proyek Anda ( `API-Authentication.zip/package.json`), sudah ada entri `type: "module"`. Kita akan pastikan nanti `dotenv` kita import di `index.js` agar variabel lingkungan bisa dibaca.
-
 ## Menjalankan Proyek (Verifikasi)
 
 Setelah semua dependensi terinstal dan file `.env` siap, mari kita coba jalankan aplikasi untuk memastikan semuanya beres.
@@ -89,7 +101,7 @@ Setelah semua dependensi terinstal dan file `.env` siap, mari kita coba jalankan
 
   Di terminal, pastikan Anda masih berada di direktori proyek (pino-auth-app/), lalu jalankan perintah ini:
 
-  ```bash
+  ```bash {title="bash"}
   node --env-file=.env index.js
   ```
 
@@ -100,23 +112,24 @@ Setelah semua dependensi terinstal dan file `.env` siap, mari kita coba jalankan
   ```
 
   (Pesan ini akan kita buat lebih "cantik" dengan Pino nanti!)
+
   Jika ingin lebih mudah pakai nodemon, jalankan perintah :
 
-  ```bash
+  ```bash {title="bash"}
   pnpm add -D nodemon
   ```
 
   Kemudian, tulis di bagian script :
 
-  ```json
-  "dev": "nodemon --exec \"node --env-file=.env index.js\""
+  ```{title="json"}
+  "dev" : "nodemon --exec \"node --env-file=.env index.js\""
   ```
 
 - **Verifikasi di Browser:**
 
   Buka web browser Anda (Chrome, Firefox, dll.) dan ketik alamat: http://localhost:3000/  
    Anda seharusnya melihat tampilan halaman web dari proyek `API-Authentication` Anda. Jika ya, berarti aplikasi Anda sudah berjalan dengan baik.  
-   Tekan `Ctrl + C` di terminal untuk menghentikan aplikasi.
+   Tekan <kbd>Ctrl + C</kbd> di terminal untuk menghentikan aplikasi.
 
 ### Mengenai perintah `node --env-file=.env index.js`
 

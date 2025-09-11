@@ -19,9 +19,9 @@ Kita tidak ingin kode logger kita tersebar di mana-mana di aplikasi. Akan lebih 
 
   ```tree
   - pino-auth-app/ | folder
-    - index.js | file-alt | secondary
-    - solution.js | file-alt | secondary
-    - package.json | file-alt | secondary
+    - index.js | fa-brands fa-js
+    - solution.js | fa-brands fa-js
+    - package.json | file-code | secondary
     - .env | file-alt | secondary
     - utils/ <--folder baru | folder | accent
     - views/ | folder
@@ -36,7 +36,7 @@ Kita tidak ingin kode logger kita tersebar di mana-mana di aplikasi. Akan lebih 
     - ...
     - ...
     - utils/ | folder | accent
-      - logger.js  <-- file baru | file-alt | secondary
+      - logger.js  <-- file baru | fa-brands fa-js | secondary
   ```
 
 ## 2. Mengimpor Pino dan dotenv
@@ -157,14 +157,14 @@ app.listen(port, () => {
 2. Buka terminal di direktori proyek Anda.
 3. Jalankan aplikasi:
 
-```bash {lineNos="true" wrap="true" title="bash"}
+```bash {title="bash"}
 node --env-file=.env index.js
 
 ```
 
 Atau jika pakai nodemon
 
-```bash {lineNos="true" wrap="true" title="bash"}
+```bash {title="bash"}
 pnpm run dev
 ```
 
@@ -202,7 +202,7 @@ export default logger;
 
 Cuplikan kode
 
-```bash {lineNos="true" wrap="true" title="bash"}
+```.env {lineNos="true" title="env"}
 PORT=3000
 NODE_ENV=development
 LOG_ENABLE=false # Ubah menjadi false
@@ -361,19 +361,19 @@ export default logger;
 
 - `const now = new Date();`: Membuat objek Date baru yang merepresentasikan waktu saat ini.
 
-- `const options = { … }`: Mendefinisikan opsi format untuk Intl.DateTimeFormat. Ini menentukan bahwa kita ingin hari, bulan, tahun, jam, dan menit
+- `const options = { … }` : Mendefinisikan opsi format untuk Intl.DateTimeFormat. Ini menentukan bahwa kita ingin hari, bulan, tahun, jam, dan menit
   ditampilkan dalam format dua digit, dan menggunakan format 24 jam (hour12: false).
 
-- `return new Intl.DateTimeFormat('en-GB', options).format(now).replace(',', '').replace(/\//g, '-');`:
+- `return new Intl.DateTimeFormat('en-GB', options).format(now).replace(',', '').replace(/\//g, '-');` :
 
-  - **new Intl.DateTimeFormat('en-GB', options):** Membuat formatter tanggal dan waktu internasional.
+  - `new Intl.DateTimeFormat('en-GB', options)` : Membuat formatter tanggal dan waktu internasional.
     Lokal **en-GB** (english-Great Britain) digunakan karena secara default menghasilkan format DD/MM/YYYY.
 
-  - **.format(now):** Memformat objek Date saat ini sesuai dengan opsi yang diberikan. Hasilnya akan seperti 25/07/2025, 14:30.
+  - `.format(now)` : Memformat objek Date saat ini sesuai dengan opsi yang diberikan. Hasilnya akan seperti 25/07/2025, 14:30.
 
-  - **.replace(',', ''):** Menghapus koma yang memisahkan tanggal dan waktu.
+  - `.replace(',', '')` : Menghapus koma yang memisahkan tanggal dan waktu.
 
-  - **.replace(/\//g, '-'):** Mengganti semua garis miring (/) dengan tanda hubung (-) untuk mendapatkan format DD-MM-YYYY.
+  - `.replace(/\//g, '-')` : Mengganti semua garis miring (/) dengan tanda hubung (-) untuk mendapatkan format DD-MM-YYYY.
 
   ***
 

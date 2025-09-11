@@ -271,15 +271,15 @@ app.use((err, req, res, next) => {
 
 ### Penjelasan Modifikasi di index.js:
 
-- app.use(pinoHttp({ logger }));: Ini adalah baris paling penting untuk Pino HTTP. Dengan menempatkannya di awal middleware Anda, setiap permintaan yang masuk akan diintersep dan dicatat oleh pino-http. Kita meneruskan objek logger kustom kita agar pino-http menggunakan konfigurasi dan transport yang sudah kita siapkan (yaitu, ke konsol dengan pino-pretty).
+- `app.use(pinoHttp({ logger }));` : Ini adalah baris paling penting untuk Pino HTTP. Dengan menempatkannya di awal middleware Anda, setiap permintaan yang masuk akan diintersep dan dicatat oleh pino-http. Kita meneruskan objek logger kustom kita agar pino-http menggunakan konfigurasi dan transport yang sudah kita siapkan (yaitu, ke konsol dengan pino-pretty).
 
-- req.log.info(...), req.log.error(...): Salah satu fitur keren dari pino-http adalah ia akan melampirkan instance logger ke objek req sebagai req.log. Ini berarti di dalam setiap rute atau middleware yang dieksekusi setelah pinoHttp, Anda bisa menggunakan req.log alih-alih logger yang global. Keuntungannya? Log yang dibuat melalui req.log akan otomatis memiliki konteks permintaan HTTP tersebut (misalnya, ID permintaan, waktu respons, URL), sehingga sangat membantu saat melacak alur permintaan.
+- `req.log.info(...)`, `req.log.error(...)` : Salah satu fitur keren dari pino-http adalah ia akan melampirkan instance logger ke objek req sebagai req.log. Ini berarti di dalam setiap rute atau middleware yang dieksekusi setelah pinoHttp, Anda bisa menggunakan req.log alih-alih logger yang global. Keuntungannya? Log yang dibuat melalui req.log akan otomatis memiliki konteks permintaan HTTP tersebut (misalnya, ID permintaan, waktu respons, URL), sehingga sangat membantu saat melacak alur permintaan.
 
-- Implementasi Log di Rute Autentikasi: Saya telah menambahkan contoh penggunaan req.log.info untuk keberhasilan dan req.log.error di dalam blok try-catch pada rute /noAuth, /basicAuth, /apiKey, dan /bearerToken. Ini akan sangat membantu Anda melihat log autentikasi berhasil atau gagal, dan detail kesalahannya.
+- **Implementasi Log di Rute Autentikasi** : Saya telah menambahkan contoh penggunaan req.log.info untuk keberhasilan dan req.log.error di dalam blok try-catch pada rute /noAuth, /basicAuth, /apiKey, dan /bearerToken. Ini akan sangat membantu Anda melihat log autentikasi berhasil atau gagal, dan detail kesalahannya.
 
 Coba Jalankan Aplikasi Anda:
 
-1. Pastikan semua perubahan di utils/logger.js dan index.js sudah disimpan.
+1. Pastikan semua perubahan di **_utils/logger.js_** dan **_index.js_** sudah disimpan.
 2. Buka terminal di direktori proyek Anda.
 3. Jalankan aplikasi:
 
@@ -299,5 +299,3 @@ node --env-file=.env index.js
    Perhatikan terminal Anda. Anda akan melihat log yang rapi dan berwarna untuk setiap permintaan HTTP yang masuk, termasuk detail seperti metode, URL, status respons, dan waktu. Jika ada kesalahan, Anda juga akan melihat log error yang detail.
 
 Selamat! Anda telah menyelesaikan Sesi 4. Log di terminal Anda sekarang sudah cantik berkat Pino Pretty, dan Anda bisa otomatis mencatat setiap permintaan HTTP yang masuk dengan Pino HTTP. Ini adalah kemajuan besar dalam kemampuan debugging dan monitoring aplikasi Anda!
-
-Di Sesi 5, kita akan belajar bagaimana menyimpan log ini tidak hanya ke konsol, tetapi juga ke file, dan bahkan menggabungkan kedua output ini. Tetap semangat!

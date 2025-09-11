@@ -7,17 +7,24 @@ Di sesi pertama ini, kita akan berkenalan dengan Pino, sebuah alat canggih untuk
 
 ## Apa itu Pino dan Mengapa Menggunakannya?
 
-Bayangkan aplikasi kita ini seperti sebuah kendaraan. Saat kita mengemudikan kendaraan, kadang kita ingin tahu apa saja yang terjadi di dalamnya: kecepatan mesin, berapa bahan bakar yang tersisa, apakah ada komponen yang bermasalah, dan lain-lain. Nah itu identik dengan logging di suatu aplikasi.
+Bayangkan aplikasi kita ini seperti sebuah kendaraan. Saat kita mengemudikan kendaraan, kadang kita ingin tahu apa saja yang terjadi di dalamnya seperti:
+
+- kecepatan mesin,
+- berapa bahan bakar yang tersisa,
+- apakah ada komponen yang bermasalah,
+- dan lain-lain.
+
+Nah itu identik dengan logging di suatu aplikasi.
 
 Logging adalah proses mencatat kejadian atau informasi penting yang terjadi di dalam aplikasi kita. Catatan ini bisa berupa pesan-pesan yang membantu kita memahami alur kerja aplikasi, melacak masalah, atau bahkan memantau performa.
 
-Nah, Pino adalah salah satu "buku catatan" atau "alat pencatat" yang sangat canggih dan cepat untuk aplikasi Node.js.
+Nah, Pino adalah salah satu "alat pencatat" yang sangat canggih dan cepat untuk aplikasi Node.js.
 
 ## Mengapa memilih Pino?
 
 Ada banyak alasan mengapa Pino menjadi pilihan populer:
 
-- **Cepat Seperti Kilat**: Pino dirancang untuk menjadi logger yang sangat efisien dan cepat. Ini penting karena logging yang lambat bisa menghambat performa aplikasi kita.
+- **Cepat**: Pino dirancang untuk menjadi logger yang sangat efisien dan cepat. Ini penting karena logging yang lambat bisa menghambat performa aplikasi kita.
 
   Bayangkan aplikasi kita ini seperti sebuah pabrik yang bekerja sangat cepat, memproses banyak pesanan setiap detik. Setiap pesanan yang masuk, setiap barang yang diproduksi, dan setiap masalah yang muncul adalah kejadian yang perlu dicatat.
 
