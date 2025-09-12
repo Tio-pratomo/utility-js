@@ -1,6 +1,6 @@
 languageCode = "id"
 title = "Utility Javascript"
-theme = "relearn"
+theme = "hugo-theme-relearn"
 
 [markup]
 [markup.goldmark]
