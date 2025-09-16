@@ -11,47 +11,51 @@ Misalnya, semua permintaan ke api.example.com selalu membutuhkan baseURL yang sa
 
 Daripada menulis pengaturan ini berulang kali di setiap permintaan, Anda bisa membuat "instance baru" atau "cabang kurir" dari Axios dengan konfigurasi khusus yang sudah ditetapkan.
 
-- **axios.create([config])**
-  Penjelasan: Fungsi ini memungkinkan Anda membuat objek Axios baru yang sudah memiliki konfigurasi dasar. Semua permintaan yang Anda lakukan menggunakan instance ini akan mewarisi konfigurasi dasar tersebut.
-  Analogi: Ini seperti Anda mendirikan "kantor cabang kurir" sendiri.
+### axios.create([config])
 
-  Kantor cabang ini punya alamat utama yang sudah ditetapkan (misal, baseURL), jam operasional yang berbeda ( timeout), atau bahkan stempel khusus ( headers) yang selalu diterapkan pada setiap paket yang mereka kirim.
+Fungsi ini memungkinkan Anda membuat objek Axios baru yang sudah memiliki konfigurasi dasar. Semua permintaan yang Anda lakukan menggunakan instance ini akan mewarisi konfigurasi dasar tersebut.
 
-  Jadi, Anda tidak perlu memberitahu setiap kurir di cabang tersebut tentang pengaturan ini berulang kali.
+**Analogi :**
 
-  Contoh Pembuatan dan Penggunaan Instance:
+Ini seperti Anda mendirikan "kantor cabang kurir" sendiri.
 
-  ```js
-  // Membuat instance Axios baru
-  const instance = axios.create({
-    baseURL: "https://api.example.com", // Menentukan URL dasar
-    timeout: 5000, // Menentukan timeout (opsional)
-    headers: {
-      // Menentukan header (opsional)
-      Authorization: "Bearer your_token", // Header otorisasi
-      "Content-Type": "application/json", // Tipe konten
-    },
+Kantor cabang ini punya alamat utama yang sudah ditetapkan (misal, baseURL), jam operasional yang berbeda ( timeout), atau bahkan stempel khusus ( headers) yang selalu diterapkan pada setiap paket yang mereka kirim.
+
+Jadi, Anda tidak perlu memberitahu setiap kurir di cabang tersebut tentang pengaturan ini berulang kali.
+
+**Contoh Pembuatan dan Penggunaan Instance :**
+
+```js {title="JavaScript" wrap="true"}
+// Membuat instance Axios baru
+const instance = axios.create({
+  baseURL: "https://api.example.com", // Menentukan URL dasar
+  timeout: 5000, // Menentukan timeout (opsional)
+  headers: {
+    // Menentukan header (opsional)
+    Authorization: "Bearer your_token", // Header otorisasi
+    "Content-Type": "application/json", // Tipe konten
+  },
+});
+
+// Setelah membuat instance, Anda dapat menggunakan instance tersebut
+// untuk melakukan permintaan HTTP dengan menggunakan metode yang disediakan oleh Axios,
+// misalnya:
+instance
+  .get("/users") // Permintaan GET ke https://api.example.com/users
+  .then((response) => {
+    console.log(response.data); // Menampilkan data pengguna
+  })
+  .catch((error) => {
+    console.error(error); // Menampilkan pesan error
   });
 
-  // Setelah membuat instance, Anda dapat menggunakan instance tersebut
-  // untuk melakukan permintaan HTTP dengan menggunakan metode yang disediakan oleh Axios,
-  // misalnya:
-  instance
-    .get("/users") // Permintaan GET ke https://api.example.com/users
-    .then((response) => {
-      console.log(response.data); // Menampilkan data pengguna
-    })
-    .catch((error) => {
-      console.error(error); // Menampilkan pesan error
-    });
+// Anda juga bisa membuat instance lain dengan konfigurasi berbeda jika dibutuhkan
+const anotherInstance = axios.create({
+  baseURL: "https://another-api.com/v2",
+});
 
-  // Anda juga bisa membuat instance lain dengan konfigurasi berbeda jika dibutuhkan
-  const anotherInstance = axios.create({
-    baseURL: "https://another-api.com/v2",
-  });
-
-  anotherInstance.post("/reports", { data: "some report" });
-  ```
+anotherInstance.post("/reports", { data: "some report" });
+```
 
 ## Penamaan Instance
 
@@ -75,7 +79,7 @@ Kapan digunakan: Ini adalah pendekatan yang paling umum dan disarankan. Jika ins
 
 Contoh:
 
-```js
+```js {title="JavaScript" wrap="true"}
 const productApi = axios.create({
   baseURL: "https://api.example.com/products",
   headers: { Authorization: "Bearer product_token" },
@@ -93,7 +97,7 @@ Kapan digunakan: Jika Anda memiliki beberapa versi API yang berbeda dan perlu be
 
 Contoh:
 
-```js
+```js {title="JavaScript" wrap="true"}
 const apiV1 = axios.create({
   baseURL: "https://api.example.com/v1",
 });
@@ -116,7 +120,7 @@ Kapan digunakan: Jika aplikasi Anda relatif kecil dan Anda hanya membutuhkan sat
 
 Contoh:
 
-```js
+```js {title="JavaScript" wrap="true"}
 const client = axios.create({
   baseURL: "https://my-app-api.com",
 });
@@ -127,7 +131,9 @@ client.get("/dashboard");
 ### Tips Penting dalam Penamaan:
 
 - Deskriptif: Nama harus memberikan gambaran yang jelas tentang tujuan instance tersebut.
+
 - Konsisten: Gunakan konvensi penamaan yang sama di seluruh project Anda.
+
 - Hindari nama generik berlebihan: Meskipun instance atau client bisa diterima untuk kasus sederhana, untuk project yang lebih kompleks, nama yang lebih spesifik seperti productApi atau authService akan sangat membantu dalam menjaga keterbacaan kode.
 
 Pada dasarnya, Anda bisa menamainya apa pun, asalkan Anda dan tim Anda (jika ada) dapat dengan mudah memahami apa yang diwakili oleh instance tersebut.

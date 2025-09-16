@@ -74,7 +74,9 @@ Semakin detail Anda mengisi formulir ini, semakin tepat "kurir" Axios akan mengi
 - **params**:
   Ini adalah parameter URL yang akan dikirim bersama request. Ini harus berupa objek biasa atau objek URLSearchParams.
 
-  > Penting: parameter yang null atau undefined tidak akan ditampilkan di URL.
+  > [!important] Penting
+  >
+  > parameter yang `null` atau `undefined` tidak akan ditampilkan di URL.
   > Analogi: Ini seperti menuliskan beberapa detail tambahan di alamat.
   > Contoh: alamat.com/produk?id=123& warna=biru. Data id=123 dan warna=biru adalah params.
 
@@ -195,7 +197,7 @@ Semakin detail Anda mengisi formulir ini, semakin tepat "kurir" Axios akan mengi
 
 - **maxContentLength**: Ini mendefinisikan ukuran maksimum konten respons http dalam byte yang diizinkan di node.js.
 
-- _maxBodyLength_: Ini (opsi Node saja) mendefinisikan ukuran maksimum konten request http dalam byte yang diizinkan.
+- **maxBodyLength**: Ini (opsi Node saja) mendefinisikan ukuran maksimum konten request http dalam byte yang diizinkan.
 
 - **validateStatus**:
   Ini mendefinisikan apakah akan me-resolve atau me-reject promise untuk kode status respons HTTP tertentu.
@@ -209,7 +211,7 @@ Semakin detail Anda mengisi formulir ini, semakin tepat "kurir" Axios akan mengi
     }
   ```
 
-- maxRe\*directs: Ini mendefinisikan jumlah maksimum pengalihan yang harus diikuti di node.js. Jika diatur ke 0, tidak ada pengalihan yang akan diikuti. Defaultnya `5`.
+- **maxRedirects**: Ini mendefinisikan jumlah maksimum pengalihan yang harus diikuti di node.js. Jika diatur ke 0, tidak ada pengalihan yang akan diikuti. Defaultnya `5`.
 
 - **socketPath**:
   Ini mendefinisikan Soket UNIX yang akan digunakan di node.js.

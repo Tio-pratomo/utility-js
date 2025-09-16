@@ -20,7 +20,7 @@ Ini adalah cara paling dasar dan paling fleksibel untuk membuat permintaan denga
 
 - Contoh Kode:
 
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   axios({
     method: "get", // Jenis permintaan: mengambil data
     url: "https://api.example.com/users", // Alamat tujuan
@@ -47,7 +47,7 @@ Ini adalah cara paling dasar dan paling fleksibel untuk membuat permintaan denga
 
 - Contoh Kode:
 
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   axios
     .request({
       method: "post", // Jenis permintaan: mengirim data baru
@@ -78,7 +78,7 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 
 - Contoh Kode:
 
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   // Mengambil daftar pengguna
   axios
     .get("https://api.example.com/users")
@@ -111,7 +111,7 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 - Analogi: Ini seperti meminta kurir untuk "mengirimkan" sebuah paket baru ke alamat tertentu.
 
 - Contoh Kode:
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   // Mengirim data pengguna baru
   axios
     .post("https://api.example.com/register", {
@@ -134,7 +134,7 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 - Analogi: Ini seperti meminta kurir untuk "mengganti seluruh isi" kotak yang sudah ada di alamat tertentu dengan isi kotak yang baru.
 
 - Contoh Kode:
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   // Memperbarui detail produk secara keseluruhan
   axios
     .put("https://api.example.com/products/123", {
@@ -159,7 +159,7 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 
 - Contoh Kode:
 
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   // Hanya memperbarui stok produk
   axios
     .patch("https://api.example.com/products/123", {
@@ -179,9 +179,9 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 
 - Analogi: Ini seperti meminta kurir untuk "membuang" atau "menghilangkan" sebuah kotak dari alamat tertentu.
 
-  - Contoh Kode:
+- Contoh Kode:
 
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   // Menghapus pengguna dengan ID 789
   axios
     .delete("https://api.example.com/users/789")
@@ -200,7 +200,7 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
 - Analogi: Ini seperti meminta kurir untuk hanya memberikan informasi "label paket" saja (berat, pengirim, jenis barang) tanpa membuka dan melihat isi paketnya.
 
 - Contoh Kode:
-  ```js
+  ```js {title="JavaScript" wrap="true"}
   axios
     .head("https://api.example.com/document.pdf")
     .then((response) => {
@@ -212,22 +212,30 @@ Axios menyediakan metode yang lebih singkat dan langsung untuk jenis permintaan 
     });
   ```
 
+````
+
 #### **axios.options(url[, config])**
 
-      - Penjelasan: Digunakan untuk mendapatkan informasi tentang opsi komunikasi yang tersedia untuk sumber daya target. Ini memberi tahu Anda metode HTTP apa saja yang diizinkan untuk URL tersebut.
+- Penjelasan: Digunakan untuk mendapatkan informasi tentang opsi komunikasi yang tersedia untuk sumber daya target. Ini memberi tahu Anda metode HTTP apa saja yang diizinkan untuk URL tersebut.
 
-      - Analogi: Ini seperti bertanya kepada kurir, "Metode pengiriman apa saja yang tersedia untuk alamat ini?"
+- Analogi: Ini seperti bertanya kepada kurir, "Metode pengiriman apa saja yang tersedia untuk alamat ini?"
 
-      - Contoh Kode:
-      	```js
-            axios.options('https://api.example.com/users')
-            .then(response => {
-                // Biasanya, informasi metode yang diizinkan ada di header 'Allow'
-                console.log('Metode yang diizinkan untuk /users:', response.headers.allow);
-            })
-            .catch(error => {
-                console.error('Gagal mendapatkan opsi:', error);
-            });
-          ```
+- Contoh Kode:
+
+  ```js {title="JavaScript" wrap="true"}
+  axios
+    .options("https://api.example.com/users")
+    .then((response) => {
+      // Biasanya, informasi metode yang diizinkan ada di header 'Allow'
+      console.log(
+        "Metode yang diizinkan untuk /users:",
+        response.headers.allow
+      );
+    })
+    .catch((error) => {
+      console.error("Gagal mendapatkan opsi:", error);
+    });
+  ```
 
 Memahami berbagai metode ini akan sangat membantu Anda dalam berinteraksi dengan API server secara efektif.
+````

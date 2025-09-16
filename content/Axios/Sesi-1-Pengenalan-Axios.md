@@ -48,30 +48,45 @@ Kurir super cepat ini punya banyak kelebihan yang membuat pekerjaannya jadi sang
 Sebelum Anda bisa menggunakan "kurir super cepat" ini, Anda perlu "memanggil" atau menginstalnya ke project Anda. Pastikan Anda sudah menginstal Node.js terlebih dahulu.
 Ada beberapa cara untuk menginstal Axios:
 
-- **Menggunakan npm (Node Package Manager):**
-  Buka terminal atau command prompt Anda, masuk ke folder project Anda, lalu ketik perintah ini:
+{{< tabs >}}
+{{% tab title="npm" %}}
 
-  ```bash
-  npm install axios
-  ```
+```bash
+npm install axios
+```
 
-- **Menggunakan yarn:**
-  Jika Anda lebih suka menggunakan yarn, di folder project Anda, ketik perintah ini:
+{{% /tab %}}
+{{% tab title="pnpm" %}}
 
-  ```bash
-  yarn add axios
-  ```
+```bash
+pnpm add axios
+```
 
-- **Menggunakan CDN (Content Delivery Network):**
-  Jika Anda hanya ingin menggunakannya di halaman HTML langsung (misalnya, untuk project frontend sederhana), Anda bisa menempelkan script berikut di bagian atau sebelum penutup di file HTML Anda.
+{{% /tab %}}
+{{% tab title="yarn" %}}
 
-  - **jsDelivr CDN:**
-    ```html
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    ```
-  - **unpkg CDN:**
-    ```html
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    ```
+```bash
+ yarn add axios
+```
+
+{{% /tab %}}
+
+{{% tab title="jsDelivr" %}}
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
+
+{{% /tab %}}
+
+{{% tab title="unpkg" %}}
+
+```html
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+{{% /tab %}}
+
+{{< /tabs >}}
 
 Setelah diinstal, "kurir" Axios Anda siap untuk membantu mengirim dan menjemput data!
