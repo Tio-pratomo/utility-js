@@ -1,5 +1,5 @@
 ---
-Title: "Axios Instance"
+Title: 'Axios Instance'
 Weight: 5
 ---
 
@@ -28,33 +28,33 @@ Jadi, Anda tidak perlu memberitahu setiap kurir di cabang tersebut tentang penga
 ```js {title="JavaScript" wrap="true"}
 // Membuat instance Axios baru
 const instance = axios.create({
-  baseURL: "https://api.example.com", // Menentukan URL dasar
+  baseURL: 'https://api.example.com', // Menentukan URL dasar
   timeout: 5000, // Menentukan timeout (opsional)
   headers: {
     // Menentukan header (opsional)
-    Authorization: "Bearer your_token", // Header otorisasi
-    "Content-Type": "application/json", // Tipe konten
+    Authorization: 'Bearer your_token', // Header otorisasi
+    'Content-Type': 'application/json', // Tipe konten
   },
-});
+})
 
 // Setelah membuat instance, Anda dapat menggunakan instance tersebut
 // untuk melakukan permintaan HTTP dengan menggunakan metode yang disediakan oleh Axios,
 // misalnya:
 instance
-  .get("/users") // Permintaan GET ke https://api.example.com/users
+  .get('/users') // Permintaan GET ke https://api.example.com/users
   .then((response) => {
-    console.log(response.data); // Menampilkan data pengguna
+    console.log(response.data) // Menampilkan data pengguna
   })
   .catch((error) => {
-    console.error(error); // Menampilkan pesan error
-  });
+    console.error(error) // Menampilkan pesan error
+  })
 
 // Anda juga bisa membuat instance lain dengan konfigurasi berbeda jika dibutuhkan
 const anotherInstance = axios.create({
-  baseURL: "https://another-api.com/v2",
-});
+  baseURL: 'https://another-api.com/v2',
+})
 
-anotherInstance.post("/reports", { data: "some report" });
+anotherInstance.post('/reports', { data: 'some report' })
 ```
 
 ## Penamaan Instance
@@ -81,11 +81,11 @@ Contoh:
 
 ```js {title="JavaScript" wrap="true"}
 const productApi = axios.create({
-  baseURL: "https://api.example.com/products",
-  headers: { Authorization: "Bearer product_token" },
-});
+  baseURL: 'https://api.example.com/products',
+  headers: { Authorization: 'Bearer product_token' },
+})
 
-productApi.get("/123"); // Mengambil produk dengan ID 123
+productApi.get('/123') // Mengambil produk dengan ID 123
 ```
 
 ### Sesuai dengan versi API:
@@ -99,15 +99,15 @@ Contoh:
 
 ```js {title="JavaScript" wrap="true"}
 const apiV1 = axios.create({
-  baseURL: "https://api.example.com/v1",
-});
+  baseURL: 'https://api.example.com/v1',
+})
 
 const apiV2 = axios.create({
-  baseURL: "https://api.example.com/v2",
-});
+  baseURL: 'https://api.example.com/v2',
+})
 
-apiV1.get("/users");
-apiV2.post("/items");
+apiV1.get('/users')
+apiV2.post('/items')
 ```
 
 ### Nama umum jika hanya ada satu instance utama:
@@ -122,10 +122,10 @@ Contoh:
 
 ```js {title="JavaScript" wrap="true"}
 const client = axios.create({
-  baseURL: "https://my-app-api.com",
-});
+  baseURL: 'https://my-app-api.com',
+})
 
-client.get("/dashboard");
+client.get('/dashboard')
 ```
 
 ### Tips Penting dalam Penamaan:
